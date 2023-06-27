@@ -8,7 +8,7 @@ function App() {
       <div className='content'>
         <h1>Vite + React | Building Discovery Marvel</h1>
         <br/>
-        <p>CLICK HERE FOR DISCOVERY</p>
+        <button type="button" id="discovery">CLICK HERE FOR DISCOVERY</button>
       </div>
     </>
   )
