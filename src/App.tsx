@@ -1,12 +1,11 @@
-
 import './App.css';
 import axios from 'axios';
 import md5 from 'md5';
 import { useEffect } from 'react';
 
 
-const publicKey = 'process.env.PUBLIC_KEY';
-const privateKey = 'process.env.PRIVATE_KEY';
+const publicKey = 'process.env.PUBLIC_KEY'; //Buscando como ocultar
+const privateKey = 'process.env.PRIVATE_KEY'; //Buscando como ocultar
 
 const time = Number(new Date());
 
