@@ -1,7 +1,9 @@
 # Discovery Marvel
 
-![Preview for the Newsletter Sign-up Form](./src/assets/images/screenshot.PNG)
+![Preview for the Discovery Marvel](./src/assets/images/screenshot.PNG)
 
 ## Projeto usando Vite, React e TypeScript
 
-O Projeto consiste em uma enciclopédia dos heróis dos quadrinhos Marvel©
+O Projeto consiste em uma enciclopédia dos heróis dos quadrinhos <b>Marvel©</b> utilizando a API disponibilizada pela própria Marvel no site: www.developer.marvel.com
+
+A grande dificuldade neste meu primeiro projeto consumindo uma API está sendo oculta-la de forma que os dados de acesso da minha API estejam em um ambiente seguro. Estou me familiarizando com desenvolvimento usando React e TypeScrypt.
