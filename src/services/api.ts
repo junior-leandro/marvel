@@ -2,8 +2,8 @@ import axios from 'axios';
 import md5 from 'md5';
 
 
-const privateKey = '0a1s2d3f'; // Aqui vai a API privada
-const publicKey = '0a1s2d3f'; // Aqui vai a API publica
+const privateKey = '73bcce'; // Aqui vai a API privada
+const publicKey = 'c7ac60'; // Aqui vai a API publica
 
 const time = Number(new Date());
 
