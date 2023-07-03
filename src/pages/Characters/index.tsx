@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import './style.css'
+import React, { useEffect, useState, useCallback } from 'react';
 import api from '../../services/api';
+import './style.css';
+
 
 interface ResponseData {
-  id: string
+  id: string;
   name: string;
   description: string;
   thumbnail: {
@@ -13,24 +14,60 @@ interface ResponseData {
 };
 
 const Characters: React.FC = () => {
-    const [characters, setCharacters ] = useState([]);
+  const [characters, setCharacters] = useState<ResponseData[]>([]);
 
-    useEffect(() => {
-        api
-        .get('/characters')
-        .then(response => {
-            setCharacters(response.data.data);
-            //console.log('segundo log' , characters);
-        })
-        .catch(err => console.log(err));
-    },[]);
+  useEffect(() => {
+    api
+      .get('/characters')
+      .then(response => {
+        setCharacters(response.data.data.results);
 
-    return (
-    <div className='content'>
-    <h1>Vite + React | Building Discovery Marvel</h1>
-      <br />
-    <button type="button" id="discovery">CLICK HERE FOR DISCOVERY</button>
-  </div>
-    );
+      })
+      .catch(err => console.log(err));
+  }, []);
+
+  const handleMore = useCallback(async () => {
+    try {
+      const offset = characters.length;
+      const response = await api.get('characters', {
+        params: {
+          offset,
+        },
+      });
+
+      setCharacters([...characters, ...response.data.data.results]);
+    } catch (err) {
+      console.log(err);
+    }
+
+  }, [characters])
+  return (
+    <>
+      <div className="container">
+        <h1>BEM VINDO AO MUNDO MARVEL</h1>
+        <p>Conheça os Heróis</p>
+
+        <ul className='hero-ul'>
+          {characters.map(character => {
+            if (character.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available") {
+              return null;
+            }
+            return (
+
+              <li key={character.id} className='hero-li'>
+                <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} className='hero-thumbnail' alt={`Foto do${character.name}`} />
+                <span className='name'>{character.name}</span>
+              </li>
+
+            )
+          })}
+        </ul>
+        <button onClick={handleMore} className='btn'>VER MAIS</button>
+
+      </div>
+    </>
+  );
+
+
 };
 export default Characters;
