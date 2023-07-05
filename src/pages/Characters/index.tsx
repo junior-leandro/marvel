@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import api from '../../services/api';
-import './style.css';
+import { Container, CardList, Card, ButtonMore, LogoHeader } from './styles';
 
+import logo from '../../assets/images/logo-marvel.png';
 
 interface ResponseData {
   id: string;
@@ -21,11 +22,9 @@ const Characters: React.FC = () => {
       .get('/characters')
       .then(response => {
         setCharacters(response.data.data.results);
-
       })
       .catch(err => console.log(err));
   }, []);
-
   const handleMore = useCallback(async () => {
     try {
       const offset = characters.length;
@@ -34,40 +33,34 @@ const Characters: React.FC = () => {
           offset,
         },
       });
-
       setCharacters([...characters, ...response.data.data.results]);
     } catch (err) {
       console.log(err);
     }
-
   }, [characters])
   return (
-    <>
-      <div className="container">
-        <h1>BEM VINDO AO MUNDO MARVEL</h1>
-        <p>Conheça os Heróis</p>
-
-        <ul className='hero-ul'>
-          {characters.map(character => {
-            if (character.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available") {
-              return null;
-            }
-            return (
-
-              <li key={character.id} className='hero-li'>
-                <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} className='hero-thumbnail' alt={`Foto do${character.name}`} />
-                <span className='name'>{character.name}</span>
-              </li>
-
-            )
-          })}
-        </ul>
-        <button onClick={handleMore} className='btn'>VER MAIS</button>
-
-      </div>
-    </>
+    <Container>
+      <LogoHeader>
+        <img src={logo} alt="Logo da Marvel" id="logo-marvel"/>
+      </LogoHeader>
+      <CardList>
+        {characters.map(character => {
+          if (character.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available") {
+            return null;
+          }
+          return (
+            <Card key={character.id} thumbnail={character.thumbnail}>
+              <div id="image" />
+              <h2>{character.name}</h2>
+              <p>{character.description}</p>
+            </Card>
+          );
+        })};
+      </CardList>
+      <ButtonMore onClick={handleMore}>
+        Carregar Mais Personagens
+      </ButtonMore>
+    </Container>
   );
-
-
 };
 export default Characters;

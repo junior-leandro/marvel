@@ -1,11 +1,14 @@
-import './App.css';
 import React from 'react';
-//import HomePage from './pages/Home';
 import Characters from './pages/Characters';
+import GlobalStyle from './styles/global';
 
- const App: React.FC = () => {
-  return  <Characters />;
-
- };
+const App: React.FC = () => {
+    return (
+    <>
+        <Characters />
+        <GlobalStyle />
+    </>
+    )
+};
 
 export default App;

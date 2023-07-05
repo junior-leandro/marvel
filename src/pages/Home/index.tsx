@@ -1,5 +1,5 @@
 import Characters from '../Characters';
-import './style.css';
+
 
 const HomePage: React.FC = () => {
     return (
