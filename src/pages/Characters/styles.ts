@@ -37,7 +37,7 @@ export const CardList = styled.div`
     justify-content: center;
 `;
 
-const urlImg = (props: ThumbnailData) => `${props.thumbnail.path}.${props.thumbnail.extension}`;
+const urlImg = (props:ThumbnailData) => `${props.thumbnail.path}.${props.thumbnail.extension}`;
 
 export const Card = styled.div`
     background: #f1f1f1;
@@ -63,7 +63,7 @@ export const Card = styled.div`
 
     &:hover {
         div#image{
-            height: 120px;
+            height: 220px;
         }
     }
 `;

@@ -49,7 +49,7 @@ const Characters: React.FC = () => {
             return null;
           }
           return (
-            <Card key={character.id} thumbnail={character.thumbnail}>
+            <Card key={character.id} thumbnail={character.thumbnail} >
               <div id="image" />
               <h2>{character.name}</h2>
               <p>{character.description}</p>
