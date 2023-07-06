@@ -66,7 +66,7 @@ export const Footer = styled.footer`
 `;
 export const ButtonMore = styled.div`
     background: #ec1d24;
-    border: 12px solid #ec1d24;
+    border: 2px solid #ec1d24;
     height: 40px;
     width: 60%;
     display: flex;
@@ -74,10 +74,9 @@ export const ButtonMore = styled.div`
     justify-content: center;
     box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.3);
     margin: 20px auto;
-    padding: 0 50px;
     border-radius: 5px;
     transition: all 0.2s;
-    font-size: 20px;
+    font-size: 22px;
 
     &:hover {
         background: #000000;
@@ -85,4 +84,9 @@ export const ButtonMore = styled.div`
         color: #FFFFFF;
     };
 
+    @media (max-width: 768px) {
+        width: 100%;
+        font-size: 20px;
+        
+  };
 `;
