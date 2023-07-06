@@ -41,16 +41,16 @@ const Characters: React.FC = () => {
   return (
     <Container>
       <LogoHeader>
-        <img src={logo} alt="Logo da Marvel" id="logo-marvel"/>
+        <img src={logo} alt="Logo da Marvel" id="logo-marvel" />
       </LogoHeader>
       <CardList>
         {characters.map(character => {
-          if (character.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available") {
+          if (character.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || character.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708.gif") {
             return null;
           }
           return (
-            <Card key={character.id} thumbnail={character.thumbnail} >
-              <div id="image" />
+            <Card key={character.id}>
+              <img id="image" src={`${character.thumbnail.path}.${character.thumbnail.extension}`} className='hero-thumbnail' alt={`Foto do${character.name}`} />
               <h2>{character.name}</h2>
               <p>{character.description}</p>
             </Card>
