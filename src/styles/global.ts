@@ -9,5 +9,7 @@ export default createGlobalStyle`
     outline: 0;
     font-family: 'Marvel', sans-serif;
     font-weight: 700;
+    cursor: url(https://junior.dev.br/img/hand-iron.cur), default;
 }
+
 `;

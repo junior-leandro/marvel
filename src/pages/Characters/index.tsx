@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import api from '../../services/api';
-import { Container, CardList, Card, ButtonMore, LogoHeader } from './styles';
+import { Container, CardList, Card, ButtonMore, LogoHeader, Footer } from './styles';
 
 import logo from '../../assets/images/logo-marvel.png';
 
@@ -54,12 +54,14 @@ const Characters: React.FC = () => {
               <h2>{character.name}</h2>
               <p>{character.description}</p>
             </Card>
-          );
+          )
         })};
       </CardList>
-      <ButtonMore onClick={handleMore}>
-        Carregar Mais Personagens
-      </ButtonMore>
+      <Footer>
+        <ButtonMore onClick={handleMore}>
+          Carregar Mais Personagens
+        </ButtonMore>
+      </Footer>
     </Container>
   );
 };
