@@ -17,13 +17,19 @@ export const Container = styled.main`
 `;
 export const LogoHeader = styled.header`
     margin:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 
     img#logo-marvel{
-        height: 200px;
+        width: 300px;
         padding: 1em;
     };
 `;
+export const Search = styled.section`
 
+`;
 export const CardList = styled.div`
     display: flex;
     flex-wrap: wrap;

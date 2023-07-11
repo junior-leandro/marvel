@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback} from 'react';
 import api from '../../services/api';
 import { Container, CardList, Card, ButtonMore, LogoHeader, Footer } from './styles';
-
+import TextInput  from '../../components/Search';
 import logo from '../../assets/images/logo-marvel.png';
 
 interface ResponseData {
@@ -42,21 +42,25 @@ const Characters: React.FC = () => {
     <Container>
       <LogoHeader>
         <img src={logo} alt="Logo da Marvel" id="logo-marvel" />
+        <TextInput onChange={(e => e.target.value)}/>
+      
       </LogoHeader>
-      <CardList>
-        {characters.map(character => {
-          if (character.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || character.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708.gif") {
-            return null;
-          }
-          return (
-            <Card key={character.id}>
-              <img id="image" src={`${character.thumbnail.path}.${character.thumbnail.extension}`} className='hero-thumbnail' alt={`Foto do${character.name}`} />
-              <h2>{character.name}</h2>
-              <p>{character.description}</p>
-            </Card>
-          )
-        })};
-      </CardList>
+
+        <CardList>
+          {characters.map(character => {
+            if (character.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" || character.thumbnail.path === "http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708.gif") {
+              return null;
+            }
+            return (
+              <Card key={character.id}>
+                <img id="image" src={`${character.thumbnail.path}.${character.thumbnail.extension}`} className='hero-thumbnail' alt={`Foto do${character.name}`} />
+                <h2>{character.name}</h2>
+                <p>{character.description}</p>
+              </Card>
+            )
+          })};
+        </CardList>
+
       <Footer>
         <ButtonMore onClick={handleMore}>
           Carregar Mais Personagens
@@ -64,5 +68,7 @@ const Characters: React.FC = () => {
       </Footer>
     </Container>
   );
-};
+}
+
+
 export default Characters;
